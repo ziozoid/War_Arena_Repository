@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>WAR ARENA CMS</title>
+
+	<!-- CSS LIBS -->
+	<link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css">
+	<!-- CSS CUSTOM -->
+	<link rel="stylesheet" type="text/css" href="css/basic.css">
+	<!-- JS LIBRARIES -->
+	<script type="text/javascript" src='js/lib/jquery-1.11.3.min.js'></script>
+	<script type="text/javascript" src='js/lib/parse-1.6.7.js'></script>
+	<!-- JS CUSTOM -->
+	<script type="text/javascript" src='js/generic.js'></script>
+</head>
+<body>
+	
+	<header>
+		<div id="logo_container"></div>
+	</header>
+	<aside></aside>
+	<div id="main_content">
+		<div class="centeres_content">
+			<form>			  
+			  <div class="form-group">
+			    <label for="wa_name">Nombre</label>
+			    <input type="text" class="form-control" name='wa_name' id="wa_name" placeholder="Nombre">
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="wa_psw">Password</label>
+			    <input type="password" class="form-control" name='wa_psw' id="wa_psw" placeholder="Password">
+			  </div>
+			  <button type="submit" id='submit_form' class="btn btn-default">Submit</button>		  
+			</form>	
+		</div>
+	</div>		
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var wa_o = new GenericWarArenaClass({});
+			wa_o._init();
+		})
+	</script>
+</body>
+</html>
