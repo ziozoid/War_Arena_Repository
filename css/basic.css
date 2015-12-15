@@ -26,13 +26,51 @@ aside{
     float: left;
 }
 
-/*** MAIN CONTENT ***/
-
-div#main_content{
-	float:left;
+aside .aside_button{
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
 }
 
+aside #add_character.aside_button{
+    margin-top: 80px;
+    background-color: #5f7986;    
+}
+aside #list_character.aside_button{
+    background-color: #95bdd3;
+}
+aside #view_profile.aside_button{
+    background-color: #224253;
+}
+aside #exit_profile.aside_button{
+    background-color: #376a86;
+}
 
+/*** MAIN CONTENT ***/
+
+body{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div#main_content{
+    float: left;
+    display: flex;
+    width: 80%;
+    margin: 80px auto;
+    background-color: #ccd9e0;
+    border-radius: 3px;
+    padding: 30px
+}
+
+div#main_content .centeres_content{
+    width: 100%;
+}
+
+/*** FORM ***/
+form button#submit_form{
+    float:right;
+}
 
 
 
