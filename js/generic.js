@@ -10,48 +10,60 @@ function GenericWarArenaClass(options){
 GenericWarArenaClass.prototype._init = function() {
 	var self = this;
 
+	self.type = self.type || self._retrieveType("type"); 
+
 	self._startParseDotCom();
 
-	self._bindings();
+	self._initType();
 };
 
-GenericWarArenaClass.prototype._startParseDotCom = function() {
+GenericWarArenaClass.prototype._initType = function() {
 	
 	var self = this;
+	var new_class = null;
 
+	switch(self.type){
+		case "login":
+			new_class = new WaLoginClass();
+		break;
+		
+		case "add":
+			new_class = new WaAddClass();
+		break;
+		
+		case "view":
+			new_class = new WaViewProfileClass();
+		break;
+		
+		case "list":
+			new_class = new WaListClass();
+		break;
+		
+		case "exit":
+			new_class = new WaExitClass();
+		break;
+		
+		default:
+			new_class = new WaLoginClass();
+		break;
+
+	}
+};
+
+GenericWarArenaClass.prototype._startParseDotCom = function() {	
+	var self = this;
 	//Init parse 
 	Parse.initialize("X40dbrzWhZyZtwWnMZkNKOnxzo67ZWo1dTgAbfny", "ScczXRqkq6BW4sDGrxgtAEfdIZN2oACq3WC3zV8u");
-
 };
 
-GenericWarArenaClass.prototype._bindings = function() {
+GenericWarArenaClass.prototype._retrieveType = function(name) {
 	
-	var self = this;
-	// Form bindings
-	$("#submit_form").off("click").on("click", function(e){
+	var self = this
 
-		e.preventDefault();
-
-		var name = $("#wa_name").val();
-		var pass = $("#wa_psw").val();
-
-		self._retrieveUser(name, pass);
-	});
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 
-GenericWarArenaClass.prototype._retrieveUser = function(name, pass) {
-
-	Parse.User.logIn(name, pass, {
-	  success: function(user) {
-	    // Do stuff after successful login.
-	    alert("Conectado")
-	    console.log("ob", Parse.Session);
-	  },
-	  error: function(user, error) {
-	    // The login failed. Check error to see why.
-	  	alert(error.message);
-
-	  	console.log("error", error);
-	  }
-	});
-};
