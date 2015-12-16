@@ -30,10 +30,21 @@ WaLoginClass.prototype._bindings = function() {
 };
 
 WaLoginClass.prototype._retriveElements = function() {
+	
 	var Elements = Parse.Object.extend("LoginTable");
+	var query = new Parse.Query(Elements);
 
-	console.log(Elements);
-
+	query.find({
+		success: function (results) {
+            for (var i = 0; i < results.length; i++) {
+		      var object = results[i];
+		      console.log(object.get('elem'));
+		    }           
+        },
+	    error: function (error) {
+	    	console.log("error", error);
+	    }
+	})
 };
 
 WaLoginClass.prototype._retrieveUser = function(name, pass) {
