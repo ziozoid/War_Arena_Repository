@@ -10,8 +10,6 @@ WaLoginClass.prototype._init = function() {
 
 	self._retriveElements();
 
-	self._bindings();
-
 };
 
 WaLoginClass.prototype._bindings = function() {
@@ -30,16 +28,23 @@ WaLoginClass.prototype._bindings = function() {
 };
 
 WaLoginClass.prototype._retriveElements = function() {
+
+	var self = this;
 	
 	var Elements = Parse.Object.extend("LoginTable");
 	var query = new Parse.Query(Elements);
 
+	var container = $("<form>")
+					.attr("id", "wa_login_form");
+
 	query.find({
 		success: function (results) {
-            for (var i = 0; i < results.length; i++) {
-		      var object = results[i];
-		      console.log(object.get('elem'));
-		    }           
+            for (var i = 0; i < results.length; i++) {		      
+		      container.append(self._drawElement(results[i]));
+		    }
+
+		    $(".centeres_content").append(container);
+		    self._bindings();           
         },
 	    error: function (error) {
 	    	console.log("error", error);
@@ -58,12 +63,23 @@ WaLoginClass.prototype._retrieveUser = function(name, pass) {
 	  error: function(user, error) {
 	    // The login failed. Check error to see why.
 	  	alert(error.message);
-
 	  	console.log("error", error);
 	  }
 	});
 };
 
-WaLoginClass.prototype._draw = function() {
+WaLoginClass.prototype._drawElement = function(object) {
 	
+	var self = this;
+
+	var element = $("<"+object.get("elem")+">")
+				  .attr({
+				  	"id": object.get("el_id"),
+				  	"type": object.get("type"),
+				  	"placeholder": object.get("placeholder")
+				  })
+				  .addClass(object.get("classes"))
+				  .text(object.get("text"))
+
+	return element;
 };

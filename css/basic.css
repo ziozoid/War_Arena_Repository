@@ -1,3 +1,10 @@
+/*** GENERAL ***/
+h1{
+    color: #254567;
+    text-align: right;
+    margin-right: 6.6%;
+}
+
 
 /*** HEADER ***/
 
@@ -14,8 +21,14 @@ header div#logo_container{
     background-image: url(../imgs/logos/helmet.png);
     background-repeat: no-repeat;
     background-position: 27px 20px;
+    float: left;
 }
 
+header div#right_text{
+    height: 80px;
+    float: right;
+    width: calc(100% - 80px);
+}
 
 /*** ASIDE ***/
 
