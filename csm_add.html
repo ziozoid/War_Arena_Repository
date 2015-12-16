@@ -11,12 +11,8 @@
 	<!-- JS LIBRARIES -->
 	<script type="text/javascript" src='js/lib/jquery-1.11.3.min.js'></script>
 	<script type="text/javascript" src='js/lib/parse-1.6.7.js'></script>
-	<!-- JS CLASSESº -->
+	<!-- JS CUSTOM -->
 	<script type="text/javascript" src='js/generic.js'></script>
-	<script type="text/javascript" src='js/WaLoginClass.js'></script>
-	<script type="text/javascript" src='js/WaAddClass.js'></script>
-	<script type="text/javascript" src='js/WaExitClass.js'></script>
-	<script type="text/javascript" src='js/WaViewProfileClass.js'></script>
 </head>
 <body>
 	
@@ -40,21 +36,7 @@
 
 		<div class="centeres_content">
 
-			<form>			  
-			  
-			  <div class="form-group">
-			    <label for="wa_name">Nombre</label>
-			    <input type="text" class="form-control" name='wa_name' id="wa_name" placeholder="Nombre">
-			  </div>
-			  
-			  <div class="form-group">
-			    <label for="wa_psw">Password</label>
-			    <input type="password" class="form-control" name='wa_psw' id="wa_psw" placeholder="Password">
-			  </div>
-			  
-			  <button type="submit" id='submit_form' class="btn btn-default">Submit</button>
-
-			</form>
+			
 
 		</div>
 	
@@ -62,7 +44,9 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var wa_o = new GenericWarArenaClass({});
+			var wa_o = new GenericWarArenaClass({
+				type: "add"
+			});
 			wa_o._init();
 		})
 	</script>
