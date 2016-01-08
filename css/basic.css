@@ -43,17 +43,21 @@ aside .aside_button{
     width: 80px;
     height: 80px;
     cursor: pointer;
-    position: relative;
+    position: relative;        
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 aside #add_character.aside_button,
 aside #add_character.aside_button .line_bar{
     margin-top: 80px;
-    background-color: #5f7986;    
+    background-color: #5f7986;
+    background-image: url(../imgs/add-character.png);    
 }
 aside #list_character.aside_button,
 aside #list_character.aside_button .line_bar{
     background-color: #95bdd3;
+    background-image: url(../imgs/list-character.png); 
 }
 aside #view_profile.aside_button,
 aside #view_profile.aside_button .line_bar{
@@ -65,6 +69,7 @@ aside #exit_profile.aside_button .line_bar{
 }
 
 aside .line_bar {
+    background-image: none !important;
     margin-top: 0px;
     position: absolute;
     width: 5px;
