@@ -43,20 +43,46 @@ aside .aside_button{
     width: 80px;
     height: 80px;
     cursor: pointer;
+    position: relative;
 }
 
-aside #add_character.aside_button{
+aside #add_character.aside_button,
+aside #add_character.aside_button .line_bar{
     margin-top: 80px;
     background-color: #5f7986;    
 }
-aside #list_character.aside_button{
+aside #list_character.aside_button,
+aside #list_character.aside_button .line_bar{
     background-color: #95bdd3;
 }
-aside #view_profile.aside_button{
+aside #view_profile.aside_button,
+aside #view_profile.aside_button .line_bar{
     background-color: #224253;
 }
-aside #exit_profile.aside_button{
+aside #exit_profile.aside_button,
+aside #exit_profile.aside_button .line_bar{
     background-color: #376a86;
+}
+
+aside .line_bar {
+    margin-top: 0px;
+    position: absolute;
+    width: 5px;
+    height: 0px;
+    bottom: 0px;
+    right: -10px;
+    -moz-transition: height 0.6s ease;
+    -webkit-transition: height 0.6s ease;
+    -o-transition: height 0.6s ease;
+    transition: height 0.6s ease;
+}
+
+aside .aside_button:hover .line_bar{
+    height: 80px;
+}
+
+aside .aside_button.selected .line_bar{
+    height: 80px;
 }
 
 /*** MAIN CONTENT ***/
